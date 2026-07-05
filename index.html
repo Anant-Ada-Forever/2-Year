@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30 Reasons Why I Love You ❤️</title>
+    <!-- Tailwind CSS for modern, responsive layout -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Fonts for an elegant, romantic look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f9e1ef; 
+        }
+        .font-romantic { font-family: 'Dancing Script', cursive; }
+    </style>
+</head>
+<body class="text-stone-800 min-h-screen flex flex-col justify-between overflow-x-hidden select-none">
+
+    <!-- Header / Progress Bar -->
+    <header class="w-full max-w-4xl mx-auto px-6 pt-6 flex justify-between items-center z-10">
+        <h1 class="font-romantic text-2xl text-rose-700 font-bold drop-shadow-xs">Happy 2nd Anniversary</h1>
+        <div class="text-sm font-medium tracking-wide text-stone-600 bg-white/80 backdrop-blur-xs px-3 py-1 rounded-full shadow-xs">
+            Reason <span id="current-slide-num">1</span> of 30
+        </div>
+    </header>
+
+    <!-- Slide Content Container -->
+    <main class="flex-1 flex items-center justify-center p-4 my-4 max-w-5xl mx-auto w-full">
+        <div id="slide-card" class="bg-white rounded-2xl shadow-xl overflow-hidden w-full max-w-4xl flex flex-col md:flex-row min-h-[450px] transition-all duration-500 opacity-100 scale-100 transform">
+            
+            <!-- Left Side: Image Container -->
+            <div class="w-full md:w-1/2 h-64 md:h-auto relative bg-stone-100 overflow-hidden flex items-center justify-center">
+                <img id="reason-image" src="images/photo1.jpg" alt="Memory" class="w-full h-full object-cover transition-all duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            </div>
+
+            <!-- Right Side: Text Content -->
+            <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-between bg-radial from-white to-stone-50/30">
+                <div>
+                    <!-- Big Romantic Number -->
+                    <div id="reason-num-display" class="font-romantic text-5xl md:text-6xl text-rose-500 mb-2">#1</div>
+                    <!-- Core Reason Title -->
+                    <h2 id="reason-title" class="text-xl md:text-2xl font-semibold text-stone-900 tracking-tight mb-4 leading-snug">
+                        I love you because you make me feel at home, no matter where we are.
+                    </h2>
+                    <!-- Detailed Paragraph -->
+                    <p id="reason-desc" class="text-stone-600 leading-relaxed font-light text-base md:text-lg">
+                        It doesn't matter if we are in a crowded room, traveling to a new city, or just sitting in silence, being next to you instantly grounds me. Your presence is a constant comfort, turning any unfamiliar place into a space where I belong completely.
+                    </p>
+                </div>
+
+                <!-- Touch Device Hint (Only shows on mobile temporarily) -->
+                <p class="text-stone-400 text-xs mt-6 md:hidden text-center italic">Swipe or tap arrows below to navigate</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Navigation Footer -->
+    <footer class="w-full max-w-4xl mx-auto px-6 pb-8 flex flex-col items-center gap-4 z-10">
+        <!-- Visual Progress Indicator Line -->
+        <div class="w-full bg-white/40 h-1.5 rounded-full overflow-hidden shadow-xs">
+            <div id="progress-bar-fill" class="bg-rose-600 h-full transition-all duration-300 ease-out" style="width: 3.33%"></div>
+        </div>
+
+        <!-- Button Controls -->
+        <div class="flex justify-between items-center w-full mt-2">
+            <button id="prev-btn" class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/80 text-stone-700 font-medium hover:bg-white border border-white/20 shadow-xs active:scale-95 transition-all cursor-pointer disabled:opacity-30 disabled:pointer-events-none">
+                ← Back
+            </button>
+            <button id="next-btn" class="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-rose-600 text-white font-medium hover:bg-rose-700 shadow-md shadow-rose-600/20 active:scale-95 transition-all cursor-pointer">
+                Next →
+            </button>
+        </div>
+    </footer>
+
+    <!-- App Logic Scripts -->
+    <script>
+        const reasons = [
+            {
+                title: "I love you because you make me feel at home, no matter where we are.",
+                desc: "It doesn't matter if we are in a crowded room, traveling to a new place, or just sitting in silence, being next to you instantly grounds me. Your presence is my constant comfort, turning any space into somewhere I belong.",
+                image: "images/photo1.jpg"
+            },
+            {
+                title: "I love you because your hugs are the safest place in the entire world.",
+                desc: "Whenever things get stressful or overwhelming, wrapping my arms around you makes everything else melt away. In your embrace, I feel completely protected, secure, and entirely at peace.",
+                image: "images/photo2.jpg"
+            },
+            {
+                title: "I love you because you care about me in ways that even I don't notice sometimes.",
+                desc: "Your love isn't just about big gestures, it's woven into the subtle, quiet things you do to ensure I'm happy and healthy. You anticipate what I need before I even realize it myself, and that care means everything to me.",
+                image: "images/photo3.jpg"
+            },
+            {
+                title: "I love you because you always believe in me, even when I struggle to believe in myself.",
+                desc: "When self-doubt creeps in, your unwavering faith becomes my anchor. You see my potential clearly even when I lose sight of it, pushing me forward with a quiet confidence that builds me right back up.",
+                image: "images/photo4.jpg"
+            },
+            {
+                title: "I love you because you celebrate every little win of mine like it's your own.",
+                desc: "Whether it's a major milestone or just a small daily victory, your genuine excitement and pride shine brighter than anyone else's. Sharing my successes with you makes them infinitely sweeter.",
+                image: "images/photo5.jpg"
+            },
+            {
+                title: "I love you because you never stop trying for us.",
+                desc: "Relationships take work, and I admire how fiercely dedicated you are to building ours. Your willingness to communicate, grow, and put effort into our bond shows me how deeply you value what we have.",
+                image: "images/photo6.jpg"
+            },
+            {
+                title: "I love you because your smile genuinely makes my whole day better.",
+                desc: "No matter how exhaustion or stress might be weighing on me, seeing your face light up instantly lifts my spirits. It's a radiant reminder of what truly matters, and it never fails to reset my mood.",
+                image: "images/photo7.jpg"
+            },
+            {
+                title: "I love you because you understand me in a way no one else ever has.",
+                desc: "I never have to over-explain myself around you. You can read my expressions, sense my moods, and perceive my thoughts with an effortless intuition that makes me feel deeply known and heard.",
+                image: "images/photo8.jpg"
+            },
+            {
+                title: "I love you because you make even the most ordinary moments feel special.",
+                desc: "Running errands, driving around aimlessly, or just sitting on the couch doing absolutely nothing becomes an adventure when you're there. You bring an infectious light into the mundane routines of life.",
+                image: "images/photo9.jpg"
+            },
+            {
+                title: "I love you because you're the first person I want to tell everything to.",
+                desc: "Whether I hear good news, bad news, or just something completely random, my immediate instinct is always to grab my phone or run to you. You are my ultimate sounding board and confidante.",
+                image: "images/photo10.jpg"
+            },
+            {
+                title: "I love you because you're my best friend before you're anything else.",
+                desc: "Beyond the romance, we share a deep foundation of friendship, inside jokes, and mutual respect. I can laugh like an absolute idiot with you, knowing you're right there laughing along with me.",
+                image: "images/photo11.jpg"
+            },
+            {
+                title: "I love you because you make me want to become a better person every single day.",
+                desc: "Your kindness, integrity, and grace inspire me to level up. You don't demand perfection from me, but your beautiful way of living makes me genuinely desire to be the best version of myself for you.",
+                image: "images/photo12.jpg"
+            },
+            {
+                title: "I love you because you're never afraid to love with your whole heart.",
+                desc: "The vulnerability and depth of your love are absolutely beautiful. You pour yourself into us without holding back, and that courageous, unconditional affection is something I cherish every single second.",
+                image: "images/photo13.jpg"
+            },
+            {
+                title: "I love you because you make me feel so appreciated and valued.",
+                desc: "I never have to wonder where I stand with you. You constantly voice your gratitude, recognize my efforts, and remind me through actions and words that I mean the world to you.",
+                image: "images/photo14.jpg"
+            },
+            {
+                title: "I love you because every time you look at me, I somehow feel like the luckiest guy alive.",
+                desc: "There is a specific warmth and tenderness in your eyes when we catch each other looking. It completely shifts my perspective and reminds me how incredibly blessed I am to have you by my side.",
+                image: "images/photo15.jpg"
+            },
+            {
+                title: "I love you because you remember the smallest things about me.",
+                desc: "From random preferences I mentioned months ago to the subtle quirks in my habits, you notice and remember everything. It shows a level of attentiveness that makes me feel incredibly special.",
+                image: "images/photo16.jpg"
+            },
+            {
+                title: "I love you because you make me laugh even on days I don't feel like smiling.",
+                desc: "Your unique sense of humor, quick wit, and playful teasing are my absolute favorite remedies. When the weight of the world feels heavy, you always know exactly how to break the tension.",
+                image: "images/photo17.jpg"
+            },
+            {
+                title: "I love you because you make me feel safe enough to be completely myself.",
+                desc: "With you, all guards come down. I don't have to filter my thoughts, hide my flaws, or put on a brave face. I can simply exist exactly as I am, knowing I am entirely accepted.",
+                image: "images/photo18.jpg"
+            },
+            {
+                title: "I love you because you've become my favorite part of every single day.",
+                desc: "No matter what my schedule looks like, the highlights of my day are always the moments I get to spend talking to you, seeing you, or holding you. You are the bright spot I constantly look forward to.",
+                image: "images/photo19.jpg"
+            },
+            {
+                title: "I love you because every future I imagine has you in it.",
+                desc: "When I think about where I want to go, what I want to achieve, and who I want to grow old with, your face is the only constant. I simply can't envision a beautiful life that doesn't involve you.",
+                image: "images/photo20.jpg"
+            },
+            {
+                title: "I love you because you're patient with me, even when I'm difficult.",
+                desc: "I know I'm not always easy to deal with, but your understanding and grace never falter. You give me the space and time to navigate my moods, meeting me with a calmness that balances me out.",
+                image: "images/photo21.jpg"
+            },
+            {
+                title: "I love you because you make love feel easy, warm, and peaceful.",
+                desc: "With you, love isn't chaotic, stressful, or full of unnecessary games. It's stable, warm, and naturally peaceful, like a quiet morning sun that brings absolute clarity and joy to my life.",
+                image: "images/photo22.jpg"
+            },
+            {
+                title: "I love you because holding your hand somehow makes every problem feel smaller.",
+                desc: "Interlocking my fingers with yours provides an instant wave of relief. It feels like a silent promise that whatever challenges we face, we are tackling them together as an unbreakable team.",
+                image: "images/photo23.jpg"
+            },
+            {
+                title: "I love you because being in your arms feels like the whole world goes quiet.",
+                desc: "All the external noise, daily anxieties, and chaotic thoughts fade into complete static the moment I hold you close. Everything settles down, and it's just you and me in our own peaceful universe.",
+                image: "images/photo24.jpg"
+            },
+            {
+                title: "I love you because you always remind me that I'm enough.",
+                desc: "In a world that constantly expects more, you love me exactly for who I am right now. Your acceptance relieves so much pressure and reassures me that my presence alone holds deep value to you.",
+                image: "images/photo25.jpg"
+            },
+            {
+                title: "I love you because you love me through my good days and my bad ones.",
+                desc: "Your devotion doesn't fluctuate based on my mood or circumstances. You are just as loving and supportive when I am struggling at my lowest point as you are when everything is going perfectly.",
+                image: "images/photo26.jpg"
+            },
+            {
+                title: "I love you because with you, I never have to pretend to be anyone else.",
+                desc: "I don't have to put on an act or wear a mask around you. You embrace my eccentricities, my absolute silliness, and all my imperfections, giving me the ultimate freedom to just be me.",
+                image: "images/photo27.jpg"
+            },
+            {
+                title: "I love you because you are my biggest comfort, my biggest cheerleader, and my favorite person all at once.",
+                desc: "You effortlessly fill so many beautiful roles in my life. You soothe me when I am down, champion my ambitions with endless enthusiasm, and hold the absolute top spot in my heart as my favorite human.",
+                image: "images/photo28.jpg"
+            },
+            {
+                title: "I love you because after everything we've been through, I still choose you every single day.",
+                desc: "Our journey over these past two years has taught us so much, and through every high and low, my choice remains completely unchanged. Every single day, I intentionally choose you, falling even deeper in love with you along the way.",
+                image: "images/photo29.jpg"
+            },
+            {
+                title: "I love you because you're simply you...",
+                desc: "My Ada, my baby, my best friend, my safest place, my happiness, my home, and the greatest blessing I've ever received. Thank you for an incredible two years. I love youuuuuu sooooooo muchhhh, and I always will. ❤️",
+                image: "images/photo30.jpg"
+            }
+        ];
+
+        let currentIndex = 0;
+
+        const card = document.getElementById('slide-card');
+        const numDisplay = document.getElementById('reason-num-display');
+        const titleDisplay = document.getElementById('reason-title');
+        const descDisplay = document.getElementById('reason-desc');
+        const imgDisplay = document.getElementById('reason-image');
+        
+        const currentSlideNum = document.getElementById('current-slide-num');
+        const progressBarFill = document.getElementById('progress-bar-fill');
+        
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+        function updateSlide(index) {
+            // Apply a smooth fade out
+            card.classList.remove('opacity-100', 'scale-100');
+            card.classList.add('opacity-0', 'scale-95', 'blur-xs');
+
+            setTimeout(() => {
+                // Update text content
+                numDisplay.textContent = `#${index + 1}`;
+                titleDisplay.textContent = reasons[index].title;
+                descDisplay.textContent = reasons[index].desc;
+                imgDisplay.src = reasons[index].image;
+                
+                // Keep the final slide unique without a static number look
+                if(index === 29) {
+                    numDisplay.textContent = "Forever ❤️";
+                }
+
+                // Update Progress Elements
+                currentSlideNum.textContent = index + 1;
+                const progressPercent = ((index + 1) / reasons.length) * 100;
+                progressBarFill.style.width = `${progressPercent}%`;
+
+                // Handle Button States
+                prevBtn.disabled = index === 0;
+                if (index === reasons.length - 1) {
+                    nextBtn.textContent = "Restart 🔄";
+                    nextBtn.classList.remove('bg-rose-600', 'hover:bg-rose-700');
+                    nextBtn.classList.add('bg-stone-800', 'hover:bg-stone-900');
+                } else {
+                    nextBtn.textContent = "Next →";
+                    nextBtn.classList.remove('bg-stone-800', 'hover:bg-stone-900');
+                    nextBtn.classList.add('bg-rose-600', 'hover:bg-rose-700');
+                }
+
+                // Smooth fade back in
+                card.classList.remove('opacity-0', 'scale-95', 'blur-xs');
+                card.classList.add('opacity-100', 'scale-100');
+            }, 250);
+        }
+
+        // Event Listeners for buttons
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex < reasons.length - 1) {
+                currentIndex++;
+            } else {
+                currentIndex = 0; // Loops back to the start
+            }
+            updateSlide(currentIndex);
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateSlide(currentIndex);
+            }
+        });
+
+        // Keyboard Arrow Controls for desktop presentation feel
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextBtn.click();
+            } else if (e.key === 'ArrowLeft') {
+                prevBtn.click();
+            }
+        });
+
+        // Initialize state
+        updateSlide(currentIndex);
+    </script>
+</body>
+</html>
